@@ -1,0 +1,43 @@
+import numpy as np
+import scipy as sp
+import matplotlib.pyplot as plt
+
+
+#Electrostatics_simple
+epsilon = 8.854187817e-12
+k = 1 / (4*np.pi*epsilon)
+r_scalar = 4
+q1 = 50000
+q2 = 50000
+
+def coulomb_simple(r_scalar, q1, q2):
+  E = k * (q1*q2)/(r_scalar**2)
+  print(E)
+coulomb_simple(r_scalar, q1, q2)
+
+#Electrostatics_Simple_Graphic
+def coulomb_simple_graph(r):
+  F = k*(q1*q2)/(r**2)
+  return F
+
+#Create range of x values(-5 to 10), then the number of separations(500)
+x_values = np.linspace(1, 10, 50)
+#Send x_values into the graph, then into y_values
+y_values = coloumb_simple_graph(x_values)
+
+#Create the plot
+plt.figure(figsize=(8,5))
+plt.plot(x_values, y_values, label = "Electric Force Over Distance", color="blue", linewidth = 2)
+
+#Add titles, labels and formatting
+
+plt.title("Chart #1")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.axhline(0, color='green', linewidth=0.5, linestyle='--') # Add X-axis line
+plt.axvline(0, color='black', linewidth=0.5, linestyle='--') # Add Y-axis line
+plt.grid(True, alpha=0.3)
+plt.legend()
+
+# 6. Display the window containing the graph
+plt.show()
